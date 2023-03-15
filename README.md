@@ -1,3 +1,4 @@
+
 # CarParkCShap
 Esta práctica tiene como objetivo afianzar los conceptos de herencia, polimorfismo e interfaces, además de practicar la clase ArrayList (listas genéricas de objetos).
 
@@ -19,10 +20,11 @@ Todos ellos heredarán de la clase Vehiculo, que será abstracta, y tendrán los
 
 Se definirá una variable estática para el número de vehículos y una constante estática para el máximo de vehículos (por defecto, 5).
 
-La clase vehículo dispondrá como mínimo de dos constructores, uno sin parámetros, inicializando con valores por defecto y otro con parámetros, para pasarle valores. También dispondrá de los métodos:
+La clase **Vehicle** dispondrá como mínimo de dos constructores, uno sin parámetros, inicializando con valores por defecto y otro con parámetros, para pasarle valores. También dispondrá de los métodos:
 
-- start(), accelerate() y brake(): todos ellos, métodos abstractos que se implementarán en cada clase concreta. Mostrarán por pantalla la acción realizada por cada vehículo.
-- toString(): método sobreescrito que en la implementación en cada clase concreta devolverá una cadena (String) con una explicación de las características de cada objeto. Podrá definirse parte del método en la clase abstracta Vehiculo y después, sobreescribiendo el método en las clases concretas.
+- *start()*, *accelerate()* y *brake()*: todos ellos, métodos abstractos que se implementarán en cada clase concreta. Mostrarán por pantalla la acción realizada por cada vehículo.
+- *toString()*: método sobreescrito que en la implementación en cada clase concreta devolverá una cadena (String) con una explicación de las características de cada objeto. Podrá definirse parte del método en la clase abstracta **Vehicle** y después, sobreescribiendo el método en las clases concretas.
+
 Además, para cada clase concreta, se crearán los siguientes atributos:
 
 > ## Car
@@ -83,3 +85,22 @@ Aparte de los propios *setters* y *getters* de cada clase, y de los constructore
 > ## Yacht
 >**Sail()** : *string*. Este método devolverá un mensaje que el yate está partiendo.
 >**Dock()** : *string*. Este método devolverá un mensaje que el yate está amarando.
+
+Se creará una clase llamada **Store**, en la que implementaremos el programa principal, que realizará las siguientes acciones:
+ - Mostrará un menú para crear los 5 tipos de vehículos pidiendo los datos necesarios en cada caso.
+- Los vehículos creados se irán almacenando en un objeto de tipo lista.
+- El menú permitirá mostrar los datos de cada vehículo del parque.
+
+Las opciones del menú serán: (a modo de ejemplo, pero podrá variarse)
+
+ 1. Crear un coche (con o sin datos)
+ 2. Crear un autobús (con o sin datos)
+ 3. Crear una motocicleta (con o sin datos)
+ 4. Crear una avioneta (con o sin datos)
+ 5. Crear un yate (con o sin datos)
+ 6. Mostrar características de todos los vehículos del parque
+ 7. Salir del programa
+
+Tened en cuenta que los objetos en la lista serán de tipo más genérico. Por tanto, el programa deberá comprobar el tipo de cada objeto para ir mostrando sus capacidades e ir realizando las operaciones con cada vehículo. Para ello, se definirán dos métodos en la clase Parque:
+- *GetVehicleType()*: se le pasará por parámetro un vehículo de tipo **Vehicle**, obtenido de la lista, y el método devolverá un entero indicando el tipo de vehículo.
+- ShowListOfVehicles(): se le pasará por parámetro una lista y lo recorrerá para ir mostrando los datos (*stats*()) y las capacidades (interfaces: qué es capaz de hacer) de cada vehículo. Este método llamará a *GetVehicleType()* para saber el tipo de cada objeto obtenido de la lista, y realizará un casting del objeto, para actuar con él como un objeto de su tipo concreto correspondiente.
